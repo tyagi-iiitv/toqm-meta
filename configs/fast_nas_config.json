@@ -1,0 +1,38 @@
+{
+    "experiment_config": {
+        "name": "[H2/22][FASTNAS][Mobile net test]",
+        "workflow_entitlement": "gpu_prod",
+        "workflow_secure_group": "team_fast_ai_team",
+
+        "mode": "PARAMSWEEP"
+    },
+    "axsweep_config":{
+        "max_pending_trials": 4,
+        "max_trials": 8,
+        "tolerated_trial_failure_rate": 0.5,
+
+        "baseline_workflow_name": "on_device_ai.fast_nas.workflows.mobilenet_v2_train_workflow.workflow",
+        "baseline_workflow_run_id": 366601115,
+        "baseline_package_version": "fblearner.flow.canary:da4cd601120944ff7c06858346c68f8f",
+
+        "generation_strategy_config":{
+            "num_initialisation_trials": 4,
+            "num_sobol_samples": 128,
+            "batch_limit": 16,
+            "use_cuda": false,
+            "model_type": "Models.FULLYBAYESIANMOO"
+        }
+    },
+    "search_space_config_path":"/data/sandcastle/boxes/fbsource/fbcode/on_device_ai/fast_nas/configs/search_space_config.json",
+    "metric_config":{
+        "metric_strategy": "SOOC",
+        "metrics":{
+            "valid_loss": {
+                "output_path": "outputs.last_val_estimates",
+                "lower_is_better": true,
+                "constraint": 0.45
+            }
+        },
+        "constraints":{}
+    }
+}

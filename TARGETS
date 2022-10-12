@@ -1,0 +1,39 @@
+load("@fbcode_macros//build_defs:python_library.bzl", "python_library")
+load("//fblearner/flow/projects:macros.bzl", "fblearner_flow_project_python_binary")
+
+python_library(
+    name = "supernet_modules",
+    srcs = [
+        "lsq_n2uq_toqm_mbv2_workflow.py",
+        "mbv2.py",
+        "mbv2_n2uq.py",
+        "mbv2_toqm.py",
+        "mobilenet_v2_lsq.py",
+        "utils.py",
+    ],
+    py_version = ">3",
+    deps = [
+        "//caffe2:torch",
+        "//caffe2/torch/distributed/launcher/fb:flow_launch",
+        "//fair_infra/data/iopath/iopath:core",
+        "//fblearner/flow:api",
+        "//github/third-party/PyTorchLightning/metrics:lib",
+        "//github/third-party/PyTorchLightning/pytorch-lightning:lib",
+        "//libfb/py/asyncio:await_utils",
+        "//manifold/blobstore/if:blobstore-py3-types",
+        "//manifold/clients/python:manifold_client",
+        "//on_device_ai/Tools/data:data",
+        "//on_device_ai/fast_nas:supernet_modules",
+        "//pytorch/vision:torchvision",
+        "//stl/lightning/callbacks:model_checkpoint",
+        "//stl/lightning/loggers:manifold_tensorboard_logger",
+        "//torchtnt:torchtnt_utils_oss",
+    ],
+)
+
+fblearner_flow_project_python_binary(
+    name = "workflow",
+    deps = [
+        ":supernet_modules",
+    ],
+)

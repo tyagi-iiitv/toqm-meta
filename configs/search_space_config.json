@@ -1,0 +1,23 @@
+{
+    "search_space_config": {
+        "kernel_config_dict":{},
+        "layer_config_dict":{},
+        "quantization_config_dict":{},
+        "activation_config_dict":{},
+        "sparsity_config_dict": {},
+        "train_config_dict":{
+            "params.lr":{
+                "param_type": "RANGE",
+                "num_type": "FLOAT",
+                "range": [0.0005,0.005],
+                "log_scale": true
+            },
+            "params.lr_step_size":{
+                "param_type": "RANGE",
+                "num_type": "INT",
+                "range": [5, 10],
+                "log_scale": true
+            }
+        }
+    }
+}

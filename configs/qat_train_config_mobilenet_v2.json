@@ -1,0 +1,32 @@
+{
+    "params": {
+        "seed": 0,
+        "max_epochs": 1,
+        "batch_size": 32,
+        "lr": 0.045,
+        "momentum": 0.9,
+        "weight_decay": 0.00004,
+        "lr_step_size": 1,
+        "lr_gamma": 0.98,
+        "num_workers": 6,
+        "manifold_path": "tree/anjul/regular_train",
+        "manifold_bucket": "on_device_ai_cv_publicdata",
+        "accelerator": "gpu",
+        "strategy": "ddp",
+        "num_node": 1,
+        "num_gpu": 1,
+        "num_cpu": 20,
+        "memory": "230g",
+        "train": true,
+        "final_eval": true,
+        "layers": [""],
+        "wt_bitwidths": [[4]],
+        "ac_bitwidths": [[4]],
+        "qconfig_method": "learnable_qa_wperchannel",
+        "is_qat": true,
+        "limit_train_batches": 2,
+        "limit_val_batches": 2,
+        "check_val_every_n_epoch": 1,
+        "optimizer": "adam"
+    }
+}
